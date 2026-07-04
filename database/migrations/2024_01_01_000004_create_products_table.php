@@ -12,7 +12,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('business_id');
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
+            $table->unique(['business_id', 'slug']);
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->unsignedInteger('stock')->default(0);
