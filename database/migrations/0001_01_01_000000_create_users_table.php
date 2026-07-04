@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->unsignedBigInteger('business_id')->nullable();
-            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('set null');
             $table->timestamps();
             $table->softDeletes();
         });

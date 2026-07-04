@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\Business;
-use App\Scopes\TenantScope;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Apply the tenant global scope to every model that uses the HasBusiness trait.
-        Business::addGlobalScope(new TenantScope());
+        // Tenant scoping is attached by models that use the BelongsToBusiness concern.
     }
 }
