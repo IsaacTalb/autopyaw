@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
 
 class DeliveryController extends Controller
 {
@@ -29,7 +28,7 @@ class DeliveryController extends Controller
         ]);
 
         Delivery::create($data);
-        return Redirect::route('deliveries.index')->with('success', 'Delivery option created');
+        return Redirect::route('deliveries.index')->with('success', __('messages.delivery_created'));
     }
 
     public function edit(Delivery $delivery)
@@ -46,12 +45,12 @@ class DeliveryController extends Controller
         ]);
 
         $delivery->update($data);
-        return Redirect::route('deliveries.index')->with('success', 'Delivery option updated');
+        return Redirect::route('deliveries.index')->with('success', __('messages.delivery_updated'));
     }
 
     public function destroy(Delivery $delivery)
     {
         $delivery->delete();
-        return Redirect::back()->with('success', 'Delivery option deleted');
+        return Redirect::back()->with('success', __('messages.delivery_deleted'));
     }
 }

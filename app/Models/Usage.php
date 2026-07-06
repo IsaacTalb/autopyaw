@@ -10,6 +10,8 @@ class Usage extends Model
 {
     use BelongsToBusiness, HasFactory;
 
+    protected $table = 'usages';
+
     protected $fillable = [
         'business_id',
         'type', // e.g., "conversation", "embedding"

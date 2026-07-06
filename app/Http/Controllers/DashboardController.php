@@ -26,6 +26,8 @@ class DashboardController extends Controller
             $stats['products'] = $business->products()->count();
             $stats['faqs'] = $business->faqs()->count();
             $stats['pages'] = $business->pages()->count();
+            $stats['deliveries'] = $business->deliveries()->count();
+            $stats['policies'] = $business->policies()->count();
             $stats['chats'] = $business->chats()->count();
             // usage for current month
             $now = now();
@@ -41,6 +43,6 @@ class DashboardController extends Controller
             $stats['plan_embeddings'] = $business->subscription_plan === 'free' ? 50 : 2000;
         }
 
-        return View::make('dashboard', ['user' => $user, 'stats' => $stats]);
+        return View::make('dashboard', ['user' => $user, 'business' => $business, 'stats' => $stats]);
     }
 }

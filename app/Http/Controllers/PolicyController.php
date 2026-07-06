@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Policy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
 
 class PolicyController extends Controller
 {
@@ -28,7 +27,7 @@ class PolicyController extends Controller
         ]);
 
         Policy::create($data);
-        return Redirect::route('policies.index')->with('success', 'Policy created');
+        return Redirect::route('policies.index')->with('success', __('messages.policy_created'));
     }
 
     public function edit(Policy $policy)
@@ -44,12 +43,12 @@ class PolicyController extends Controller
         ]);
 
         $policy->update($data);
-        return Redirect::route('policies.index')->with('success', 'Policy updated');
+        return Redirect::route('policies.index')->with('success', __('messages.policy_updated'));
     }
 
     public function destroy(Policy $policy)
     {
         $policy->delete();
-        return Redirect::back()->with('success', 'Policy deleted');
+        return Redirect::back()->with('success', __('messages.policy_deleted'));
     }
 }

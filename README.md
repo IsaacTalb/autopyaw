@@ -92,3 +92,9 @@ AutoPyaw is a production-ready MVP for an AI-powered Facebook Messenger assistan
 ## License
 
 This project is licensed under the MIT License.
+
+## Owner
+**Developer:** isaactalb  
+**Contact:** isaac@duckcloud.info
+
+Feel free to contribute!

@@ -15,6 +15,7 @@
         "vite": "^7.0.7"
     },
     "dependencies": {
-        "@clerk/clerk-js": "^6.23.0"
+        "@clerk/clerk-js": "^6.23.0",
+        "flag-icons": "^7.5.0"
     }
 }

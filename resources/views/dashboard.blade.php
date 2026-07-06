@@ -9,12 +9,17 @@
                 <div>
                     <p class="text-sm uppercase tracking-[0.28em] text-sky-400/70">{{ __('messages.dashboard') }}</p>
                     <h1 class="mt-3 text-3xl font-semibold text-white">{{ __('messages.business_console_title') }}</h1>
+                    @if ($business)
+                        <p class="mt-2 text-sm font-medium text-sky-300">{{ $business->name }}</p>
+                    @endif
                     <p class="mt-3 max-w-2xl text-slate-400">{{ __('messages.dashboard_description') }}</p>
                 </div>
-                <div class="grid gap-3 sm:grid-cols-3">
+                <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
                     <a href="{{ route('products.index') }}" class="rounded-full bg-slate-800/80 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.products') }}</a>
                     <a href="{{ route('faqs.index') }}" class="rounded-full bg-slate-800/80 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.faqs') }}</a>
                     <a href="{{ route('pages.index') }}" class="rounded-full bg-slate-800/80 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.pages') }}</a>
+                    <a href="{{ route('deliveries.index') }}" class="rounded-full bg-slate-800/80 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.delivery') }}</a>
+                    <a href="{{ route('policies.index') }}" class="rounded-full bg-slate-800/80 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.policies') }}</a>
                 </div>
             </div>
         </div>
@@ -36,6 +41,14 @@
                         <dd class="font-semibold text-white">{{ $stats['pages'] ?? 0 }}</dd>
                     </div>
                     <div class="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3">
+                        <dt>{{ __('messages.delivery') }}</dt>
+                        <dd class="font-semibold text-white">{{ $stats['deliveries'] ?? 0 }}</dd>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3">
+                        <dt>{{ __('messages.policies') }}</dt>
+                        <dd class="font-semibold text-white">{{ $stats['policies'] ?? 0 }}</dd>
+                    </div>
+                    <div class="flex items-center justify-between rounded-2xl bg-white/5 px-4 py-3">
                         <dt>{{ __('messages.chat_records') }}</dt>
                         <dd class="font-semibold text-white">{{ $stats['chats'] ?? 0 }}</dd>
                     </div>
@@ -47,11 +60,11 @@
                 <div class="mt-5 space-y-4 text-slate-300">
                     <div class="rounded-2xl bg-white/5 px-4 py-4">
                         <p class="text-sm uppercase tracking-[0.28em] text-slate-400">{{ __('messages.plan') }}</p>
-                        <p class="mt-2 text-xl font-semibold text-white">{{ $user->business->subscription_plan ?? __('messages.free') }}</p>
+                        <p class="mt-2 text-xl font-semibold text-white">{{ $business?->subscription_plan ?? __('messages.free') }}</p>
                     </div>
                     <div class="rounded-2xl bg-white/5 px-4 py-4">
                         <p class="text-sm uppercase tracking-[0.28em] text-slate-400">{{ __('messages.expires') }}</p>
-                        <p class="mt-2 text-xl font-semibold text-white">{{ $user->business->subscription_ends_at ? $user->business->subscription_ends_at->toFormattedDateString() : __('messages.no_expiry') }}</p>
+                        <p class="mt-2 text-xl font-semibold text-white">{{ $business?->subscription_ends_at ? $business->subscription_ends_at->toFormattedDateString() : __('messages.no_expiry') }}</p>
                     </div>
                 </div>
             </div>
@@ -77,11 +90,12 @@
                     <h2 class="text-lg font-semibold text-white">{{ __('messages.quick_actions') }}</h2>
                     <p class="mt-2 text-slate-400">{{ __('messages.quick_actions_description') }}</p>
                 </div>
-                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-5">
                     <a href="{{ route('products.create') }}" class="rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:opacity-95">{{ __('messages.add_product') }}</a>
                     <a href="{{ route('faqs.create') }}" class="rounded-full bg-slate-800/80 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.add_faq') }}</a>
                     <a href="{{ route('pages.create') }}" class="rounded-full bg-slate-800/80 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.connect_page') }}</a>
                     <a href="{{ route('deliveries.create') }}" class="rounded-full bg-slate-800/80 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.add_delivery') }}</a>
+                    <a href="{{ route('policies.create') }}" class="rounded-full bg-slate-800/80 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-slate-700/80">{{ __('messages.add_policy') }}</a>
                 </div>
             </div>
         </div>

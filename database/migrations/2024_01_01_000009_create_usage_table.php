@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('usage', function (Blueprint $table) {
+        Schema::create('usages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('business_id');
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
@@ -18,8 +18,9 @@ return new class extends Migration {
             $table->timestamps();
         });
     }
+
     public function down(): void
     {
-        Schema::dropIfExists('usage');
+        Schema::dropIfExists('usages');
     }
 };
